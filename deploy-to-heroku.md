@@ -2,7 +2,7 @@
 
 # DEPLOY YOUR DJANGO + POSTGRESS PROJECT TO HEROKU
 
-In order to deploy your django application to heroku, you need to add these requiremens to your `requirements.txt`:
+In order to deploy your django application to heroku, you need to add these requirements added to your `requirements.txt`:
   
 ~~~~~
 python-decouple # for managing environment variables
@@ -22,6 +22,7 @@ gunicorn        # To server your django project
 pip install python-decouple
 pip install django-heroku
 pip install whitenoise
+pip install dj-database-url
 
 ```
   
