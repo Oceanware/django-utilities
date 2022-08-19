@@ -75,9 +75,9 @@ pip install dj-database-url
   ```
   
 ## 3. Add a Pipfile
-  Create a file `Pipfile` at the root of your project. This file will be used by heroku to start your project
+  Create a file `Procfile` at the root of your project. This file will be used by heroku to start your project
   ```bash
-  
+  web: gunicorn <YOUR DJANGO PROJECT NAME>.wsgi
   ```
   
   If you want to run djano migrations or any other pre-scripts on startup, use as below;
