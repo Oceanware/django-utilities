@@ -74,8 +74,8 @@ psycopg2        # A database connector for postgresql in python
   django_heroku.settings(locals())
   ```
 
-## 3. Add a Pipfile
-Create a file `Procfile` at the root of your project. This file will be used by heroku to start your project
+## 3. Add a Procfile
+Create a file called `Procfile` at the root of your project. This file will be used by heroku to start your project
 ```bash
 web: gunicorn <YOUR DJANGO PROJECT NAME>.wsgi
 ```
