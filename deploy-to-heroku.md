@@ -82,7 +82,9 @@ pip install dj-database-url
   
   If you want to run djano migrations or any other pre-scripts on startup, use as below;
   ```bash
-  
+  release: python manage.py makemigrations
+  release: python manage.py migrate
+  web: gunicorn <YOUR DJANGO PROJECT NAME>.wsgi
   ```
  
 ## 4. Deploy
@@ -90,6 +92,13 @@ pip install dj-database-url
   You are ready to go now, your project can be deployed in heroku. 
 
   ### NOTES:
+  
   - Heroku supports additional environment variables. To add some, go to settings in your app's dashboard.
-
+  
+  - Use config function from python-decouple as below to read the environment variables.
+  
+    ```python
+    config("ENVIRONMENT_VARIABLE", default=<A DEFAULT VALUE>)
+    ```
+  
 </samp>
