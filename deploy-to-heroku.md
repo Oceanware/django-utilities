@@ -20,7 +20,6 @@ gunicorn        # To server your django project
 ```bash
 
 pip install python-decouple
-pip install django-heroku
 pip install whitenoise
 pip install dj-database-url
 
