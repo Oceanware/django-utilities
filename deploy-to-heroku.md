@@ -23,6 +23,7 @@ psycopg2        # A database connector for postgresql in python
   pip install python-decouple
   pip install whitenoise
   pip install dj-database-url
+  sudo apt install django_on_heroku
 
   ```
 
@@ -70,7 +71,7 @@ psycopg2        # A database connector for postgresql in python
 #### d. Configure django-heroku
   ... at the bottom in the `setting.py` file
   ```python
-  import django_heroku
+  import django_on_heroku
   django_heroku.settings(locals())
   ```
 
@@ -88,6 +89,10 @@ web: gunicorn <YOUR DJANGO PROJECT NAME>.wsgi
 ```
  
 ## 4. Deploy
+make sure you push and commit your project after than then  
+  
+go to ```www.heroku.com``` and create account after creating account you should create first app and connect your app with your github repository
+and then you can choose automatic deployment or manual deployment
   
 You are ready to go now, your project can be deployed in heroku. 
 You can use heroku-cli or the heroku.io website to ddeploy your app.
