@@ -28,77 +28,77 @@ psycopg2        # A database connector for postgresql in python
 
 ### 2.  Configure your `setting.py` file
   
-  #### a. Add imports
-    ... at the top of the file
-    ```python
-    from dj_database_url import parse as db_url
-    from decouple import config
-    ```
+#### a. Add imports
+  ... at the top of the `setting.py` file
+  ```python
+  from dj_database_url import parse as db_url
+  from decouple import config
+  ```
 
-  #### d. Configure database
-    Below configurations, allow you to use `postgres` on heroku and `sqlite3` locally on your machine. Replace your database settings with the following.
-    ```python
-    ...
+#### d. Configure database
+  Below configurations, allow you to use `postgres` on heroku and `sqlite3` locally on your machine. Replace your database settings in the `setting.py` with the following.
+  ```python
+  ...
 
-    DATABASES = {
-      'default': config(
-          'DATABASE_URL',
-          default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'),
-          cast=db_url
-      )
-    }
-    ...
-    ```
-
-  #### c. Configure static files
-    Make sure below settings are available in your `settings.py` files
-    ```python
-
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-    STATIC_URL = '/static/'
-
-    # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
+  DATABASES = {
+    'default': config(
+        'DATABASE_URL',
+        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'),
+        cast=db_url
     )
+  }
+  ...
+  ```
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#### c. Configure static files
+  Make sure below settings are available in your `settings.py` files
+  ```python
 
-    ```
+  STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-  #### d. Configure django-heroku
-    ... at the bottom of the file
-    ```python
-    import django_heroku
-    django_heroku.settings(locals())
-    ```
-  
+  STATIC_URL = '/static/'
+
+  # Extra places for collectstatic to find static files.
+  STATICFILES_DIRS = (
+      os.path.join(BASE_DIR, 'static'),
+  )
+
+  STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+  ```
+
+#### d. Configure django-heroku
+  ... at the bottom in the `setting.py` file
+  ```python
+  import django_heroku
+  django_heroku.settings(locals())
+  ```
+
 ## 3. Add a Pipfile
-  Create a file `Procfile` at the root of your project. This file will be used by heroku to start your project
-  ```bash
-  web: gunicorn <YOUR DJANGO PROJECT NAME>.wsgi
-  ```
-  
-  If you want to run djano migrations or any other pre-scripts on startup, use as below;
-  ```bash
-  release: python manage.py makemigrations
-  release: python manage.py migrate
-  web: gunicorn <YOUR DJANGO PROJECT NAME>.wsgi
-  ```
+Create a file `Procfile` at the root of your project. This file will be used by heroku to start your project
+```bash
+web: gunicorn <YOUR DJANGO PROJECT NAME>.wsgi
+```
+
+If you want to run djano migrations or any other pre-scripts on startup, use as below;
+```bash
+release: python manage.py makemigrations
+release: python manage.py migrate
+web: gunicorn <YOUR DJANGO PROJECT NAME>.wsgi
+```
  
 ## 4. Deploy
   
-  You are ready to go now, your project can be deployed in heroku. 
+You are ready to go now, your project can be deployed in heroku. 
 
-  ### NOTES:
-  
-  - Heroku supports additional environment variables. To add some, go to settings in your app's dashboard.
-  
-  - Use config function from python-decouple as below to read the environment variables.
-  
-    ```python
-    config("ENVIRONMENT_VARIABLE", default=<A DEFAULT VALUE>)
-    ```
+### NOTES:
+
+- Heroku supports additional environment variables. To add some, go to settings in your app's dashboard.
+
+- Use config function from python-decouple as below to read the environment variables.
+
+  ```python
+  config("ENVIRONMENT_VARIABLE", default=<A DEFAULT VALUE>)
+  ```
   
 </samp>
