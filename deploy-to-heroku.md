@@ -90,6 +90,7 @@ web: gunicorn <YOUR DJANGO PROJECT NAME>.wsgi
 ## 4. Deploy
   
 You are ready to go now, your project can be deployed in heroku. 
+You can use heroku-cli or the heroku.io website to ddeploy your app.
 
 ### NOTES:
 
