@@ -6,7 +6,7 @@ In order to deploy your django application to heroku, you need to add these requ
   
 ~~~~~
 python-decouple # for managing environment variables
-django-heroku   # To setup your django settings ready for the heroku environment 
+django-on-heroku   # To setup your django settings ready for the heroku environment 
 whitenoise      # To manage static files
 dj-database-url # To parse the heroku's Postgres DB url
 gunicorn        # To server your django project
